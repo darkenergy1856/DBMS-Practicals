@@ -1,0 +1,1 @@
+select Eno "Employee Number",Ename "Employee Name", Job_type "Job", Hire_date "Hire Date" from EMPLOYEE;

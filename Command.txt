@@ -1,0 +1,42 @@
+select Eno "Employee Number",Ename "Employee Name", Job_type "Job", Hire_date "Hire Date" from EMPLOYEE;
+select distinct Job_type "Unique Job" from EMPLOYEE;
+select concat(Ename,", ",Job_type) "Employee Name, Job" from EMPLOYEE;
+select concat(Eno,", ",Ename,", ",Job_type,", ",SupervisonENO,", ",Hire_date,", ",Dno,", ",Commission,", ",Salary) "THE_OUTPUT" from EMPLOYEE;
+select Ename "Employee Name", Salary "Salary" from EMPLOYEE where Salary > 2850;
+select Ename "Employee Name", Dno "Department Number" from EMPLOYEE where Eno = 79;
+select Ename "Employee Name", Salary "Salary" from EMPLOYEE where Salary < 1500 or Salary > 2850;
+select Ename "Employee Name", Dno "Department Number" from EMPLOYEE where Dno = 10 or Dno = 30 order by Ename;
+select Ename , Hire_date from EMPLOYEE where Hire_date like "1981%";
+select Ename , Job_type from EMPLOYEE where SupervisonENO = "NIL";
+select Ename , Salary , Commission from EMPLOYEE where Commission != 0;
+select * from EMPLOYEE order by Salary desc , Commission desc;
+select Ename "Employee Name" from EMPLOYEE where Ename like "__a%";
+select Ename "Employee Name" from EMPLOYEE where Ename like "rr%" or "aa%" or Dno = 30 or Eno = 778;
+select Ename, Salary, Commission from EMPLOYEE where Commission > (Salary + 0.05 * Salary);
+select Curdate() "Current Date" , Dayname(Curdate()) "Day";
+########17########
+select y.Emp_name as 'Name',
+    y.Hiring_date,
+    case
+        when dayname(y.new_date) = 'Tuesday' then adddate(y.new_date, interval 6 day)
+        when dayname(y.new_date) = 'Wednesday' then adddate(y.new_date, interval 5 day)
+        when dayname(y.new_date) = 'Thursday' then adddate(y.new_date, interval 4 day)
+        when dayname(y.new_date) = 'Friday' then adddate(y.new_date, interval 3 day)
+        when dayname(y.new_date) = 'Saturday' then adddate(y.new_date, interval 2 day)
+        when dayname(y.new_date) = 'Sunday' then adddate(y.new_date, interval 1 day)
+        else y.new_date
+    end as Salary_review_date
+from (
+        select x.Ename Emp_Name,
+            x.Hire_date Hiring_date,
+            adddate(hire_date, interval 6 month) new_date
+        from (
+                select Ename,
+                    Hire_date
+                from EMPLOYEE
+            ) x
+    ) y;
+########END########
+
+19 -> select concat(Ename," earns $",Salary," monthly but wants $", 3*Salary, ".") "Dream Salary" from EMPLOYEE;
+20 -> select Ename from EMPLOYEE where Ename like "J%" or "A%" or "M%";
