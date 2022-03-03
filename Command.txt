@@ -37,6 +37,9 @@ from (
             ) x
     ) y;
 ########END########
-
+18 -> 
 19 -> select concat(Ename," earns $",Salary," monthly but wants $", 3*Salary, ".") "Dream Salary" from EMPLOYEE;
 20 -> select Ename from EMPLOYEE where Ename like "J%" or "A%" or "M%";
+21 -> select Ename,Hire_date,DAYOFWEEK(Hire_date) DayOfWeeek from EMPLOYEE;
+22 -> select EMPLOYEE.Ename Name, EMPLOYEE.Dno "Department Number" ,DEPARTMENT.Dname "Department Name" from EMPLOYEE.EMPLOYEE NATURAL JOIN EMPLOYEE.DEPARTMENT;
+23 -> 
