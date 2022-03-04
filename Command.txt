@@ -14,7 +14,7 @@ select Ename "Employee Name" from EMPLOYEE where Ename like "__a%";
 select Ename "Employee Name" from EMPLOYEE where Ename like "rr%" or "aa%" or Dno = 30 or Eno = 778;
 select Ename, Salary, Commission from EMPLOYEE where Commission > (Salary + 0.05 * Salary);
 select Curdate() "Current Date" , Dayname(Curdate()) "Day";
-########17########
+########17#########
 select y.Emp_name as 'Name',
     y.Hiring_date,
     case
@@ -37,7 +37,7 @@ from (
             ) x
     ) y;
 ########END########
-18 -> 
+18 -> select Ename Name, TIMESTAMPDIFF(MONTH,Hire_date,Curdate()) "Months Between Today and Hire_date" from EMPLOYEE NATURAL JOIN DEPARTMENT where Dname = "Purchase";
 19 -> select concat(Ename," earns $",Salary," monthly but wants $", 3*Salary, ".") "Dream Salary" from EMPLOYEE;
 20 -> select Ename from EMPLOYEE where Ename like "J%" or "A%" or "M%";
 21 -> select Ename,Hire_date,DAYOFWEEK(Hire_date) DayOfWeeek from EMPLOYEE;
