@@ -42,4 +42,6 @@ from (
 20 -> select Ename from EMPLOYEE where Ename like "J%" or "A%" or "M%";
 21 -> select Ename,Hire_date,DAYOFWEEK(Hire_date) DayOfWeeek from EMPLOYEE;
 22 -> select EMPLOYEE.Ename Name, EMPLOYEE.Dno "Department Number" ,DEPARTMENT.Dname "Department Name" from EMPLOYEE.EMPLOYEE NATURAL JOIN EMPLOYEE.DEPARTMENT;
-23 -> 
+23 -> select Job_type from EMPLOYEE NATURAL JOIN DEPARTMENT where Dno = 30;
+24 -> select Ename Name,Dname "Department Name" from EMPLOYEE NATURAL JOIN DEPARTMENT where Ename like "%A%";
+25 -> select Ename Name,Job_type Job, Dno "Department Number", Dname "Department Name" from EMPLOYEE NATURAL JOIN DEPARTMENT where Location = "Dallas";
