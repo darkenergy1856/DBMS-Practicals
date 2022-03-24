@@ -45,4 +45,10 @@ from (
 23 -> select Job_type from EMPLOYEE NATURAL JOIN DEPARTMENT where Dno = 30;
 24 -> select Ename Name,Dname "Department Name" from EMPLOYEE NATURAL JOIN DEPARTMENT where Ename like "%A%";
 25 -> select Ename Name,Job_type Job, Dno "Department Number", Dname "Department Name" from EMPLOYEE NATURAL JOIN DEPARTMENT where Location = "Dallas";
-26 -> 
+26 -> select Emp.Ename Name, Emp.Eno "Employee Number",Sup.Ename "Supervison Name",Sup.Eno "Supervison Emp No." from EMPLOYEE as Emp LEFT OUTER JOIN EMPLOYEE as Sup on Sup.Eno = Emp.SupervisonENO;
+27 -> select Ename,Dno,Salary from EMPLOYEE where (Salary,Dno) IN (select Dno,Salary from EMPLOYEE where Commission >0);
+28 -> select Ename ,REPEAT("*",(Salary/100)) "Salary in * which signifies $100" from EMPLOYEE;
+29 -> select max(Salary) "Highest Salary",min(Salary) "Lowest Salary",sum(Salary) Sum,avg(Salary) Average from EMPLOYEE;
+30 -> select Job_type "Job",COUNT(Job_type) "No. of Employees" from EMPLOYEE GROUP BY Job_type ;
+31 -> select COUNT(Distinct SupervisonENO) from EMPLOYEE;
+32 -> 
