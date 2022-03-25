@@ -45,10 +45,15 @@ from (
 23 -> select Job_type from EMPLOYEE NATURAL JOIN DEPARTMENT where Dno = 30;
 24 -> select Ename Name,Dname "Department Name" from EMPLOYEE NATURAL JOIN DEPARTMENT where Ename like "%A%";
 25 -> select Ename Name,Job_type Job, Dno "Department Number", Dname "Department Name" from EMPLOYEE NATURAL JOIN DEPARTMENT where Location = "Dallas";
-26 -> select Emp.Ename Name, Emp.Eno "Employee Number",Sup.Ename "Supervison Name",Sup.Eno "Supervison Emp No." from EMPLOYEE as Emp LEFT OUTER JOIN EMPLOYEE as Sup on Sup.Eno = Emp.SupervisonENO;
+26 -> select Emp.Ename Name, Emp.Eno "Employee Number",Sup.Ename "Supervison Name",Sup.Eno "Supervison Emp No." from EMPLOYEE as Emp LEFT JOIN EMPLOYEE as Sup on Sup.Eno = Emp.SupervisonENO;
 27 -> select Ename,Dno,Salary from EMPLOYEE where (Salary,Dno) IN (select Dno,Salary from EMPLOYEE where Commission >0);
 28 -> select Ename ,REPEAT("*",(Salary/100)) "Salary in * which signifies $100" from EMPLOYEE;
 29 -> select max(Salary) "Highest Salary",min(Salary) "Lowest Salary",sum(Salary) Sum,avg(Salary) Average from EMPLOYEE;
 30 -> select Job_type "Job",COUNT(Job_type) "No. of Employees" from EMPLOYEE GROUP BY Job_type ;
 31 -> select COUNT(Distinct SupervisonENO) from EMPLOYEE;
-32 -> 
+32 -> select Dep.Dname, Dep.Location,COUNT(Dep.Dno) "No of Employees", AVG(Emp.Salary) from DEPARTMENT Dep LEFT JOIN EMPLOYEE Emp ON Emp.Dno = Dep.Dno GROUP BY Dep.Dno;
+33 -> select Emp.Ename "Name",Emp.Hire_date from EMPLOYEE Emp LEFT JOIN DEPARTMENT Dep ON Emp.Dno = Dep.Dno Where Dname = "Blake";
+34 -> select Eno "Employee No.", Ename Name from EMPLOYEE where Salary > (select AVG(Salary) from EMPLOYEE);
+35 -> 
+36 -> select Ename,Salary from EMPLOYEE where SupervisonENO = (select Eno from EMPLOYEE where Ename ="King");
+37 -> select EMPLOYEE.Dno,Ename,Job_type from EMPLOYEE left Join DEPARTMENT on EMPLOYEE.Dno = DEPARTMENT.Dno where Dname = "Sales";
